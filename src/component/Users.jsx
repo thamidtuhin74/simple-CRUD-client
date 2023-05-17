@@ -1,6 +1,6 @@
 import { key } from 'localforage';
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Users = () => {
 
@@ -30,7 +30,11 @@ const Users = () => {
         <div>
             <h3>No of User {users.length}</h3>
             {
-                users.map(user=><p key={user._id}>Email: {user.email} <button onClick={()=>delectHandler(user._id)}>X</button></p>)
+                users.map(user=><p 
+                    key={user._id}> 
+                    Email: {user.email} 
+                    <Link to={`/update/${user._id}`}><button>update</button></Link>
+                    <button onClick={()=>delectHandler(user._id)}>X</button></p>)
             }
         </div>
     );
